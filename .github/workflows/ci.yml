@@ -48,6 +48,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           IMAGE=ghcr.io/${{ github.repository_owner }}/breast-cancer-api:${{ github.sha }}
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+          echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
           docker tag breast-cancer-api:latest $IMAGE
           docker push $IMAGE
